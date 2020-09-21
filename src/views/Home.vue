@@ -15,15 +15,16 @@
             </v-layout>
             <v-layout row wrap class="mt-2">
                 <v-flex xs12>
-                    <v-carousel>
+                    <v-carousel style="cursor: pointer">
                         <v-carousel-item
                         v-for="meetup in meetups"
                         :src="meetup.imageUrl"
-                        :key="meetup.id">
+                        :key="meetup.id"
+                        @click="onLoadMeetup(meetup.id)">
                         <div class="title">{{ meetup.title }}</div>
                         </v-carousel-item>
                     </v-carousel>
-                </v-flex>
+                </v-flex> 
             </v-layout>
             <v-layout row wrap justify="center">
                 <v-flex xs12 class="text-xs-center">
@@ -42,13 +43,14 @@ export default {
         'main-header': Header
     },
 
-    data() {
-        return {
-            meetups: [
-                {imageUrl: 'https://photographyunfolded.com/wp-content/uploads/2018/08/twin-bridges-2400.jpg', id: 'sedtrjfyukgvj,h', title: 'Meetup in New York'},
-                {imageUrl: 'https://felixwong.com/gallery/images/c/cars-in-paris-mar-2019-015.jpg', id: ',khjgfnbd', title: 'Meetup in Paris'},
-                {imageUrl: 'https://pixy.org/src/42/428201.jpg', id: 'jhgfdsascvdfg', title: 'Meetup in Maldives'}
-            ]
+    computed: {
+        meetups() {
+            return this.$store.getters.featuredMeetups
+        }
+    },
+    methods: {
+        onLoadMeetup(id) {
+            this.$router.push('/meetups/' + id)
         }
     }
 }
