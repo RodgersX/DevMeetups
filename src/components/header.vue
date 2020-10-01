@@ -43,15 +43,28 @@
 export default {
     data() {
         return {
-            drawer: false,
-            menuItems: [
-                {icon: 'mdi-account-group', title: 'View Meetups', link: '/meetups'}, 
-                {icon: 'mdi-plus-thick', title: 'Organize Meetup', link: '/meetup/new'},
-                {icon: 'mdi-face-profile', title: 'Profile', link: '/profile'},
-                {icon: 'mdi-home-plus', title: 'Sign Up', link: '/signup'},
-                {icon: 'mdi-login', title: 'Sign In', link: '/signin'}
-            ]
+          drawer: false
         }
+    },
+
+    computed: {
+      menuItems() {
+        let menuItems = [
+          {icon: 'mdi-home-plus', title: 'Sign Up', link: '/signup'},
+          {icon: 'mdi-login', title: 'Sign In', link: '/signin'}
+        ]
+        if(this.userIsAuthenticated) {
+          menuItems = [
+            {icon: 'mdi-account-group', title: 'View Meetups', link: '/meetups'}, 
+            {icon: 'mdi-plus-thick', title: 'Organize Meetup', link: '/meetup/new'},
+            {icon: 'mdi-face-profile', title: 'Profile', link: '/profile'}
+          ]
+        }
+        return menuItems
+      },
+      userIsAuthenticated() {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
     }
 }
 </script>
