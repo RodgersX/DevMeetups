@@ -4,8 +4,10 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router/index'
 import { store } from './store'
+import alertCmp from './components/shared/alert.vue'
 
 Vue.config.productionTip = false
+Vue.component('app-alert', alertCmp)
 
 new Vue({
   vuetify,
