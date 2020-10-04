@@ -18,7 +18,7 @@
                         <v-container fluid>
                             <v-layout row>
                                 <v-flex xs5 sm4 md3>
-                                    <v-img height="130px" :src="meetup.imageUrl"> </v-img>
+                                    <v-img height="130px" :src="meetup.imageUrl"></v-img>
                                 </v-flex>
                                 <v-flex xs7 sm8 md9>
                                     <v-card-title primary-title>

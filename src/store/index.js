@@ -40,7 +40,7 @@ export const store = new Vuex.Store({
                 location: payload.location,
                 imageUrl: payload.imageUrl,
                 description: payload.description,
-                // date: payload.date
+                date: payload.date
             }
             firebase.database().ref('meetups').push(meetup)
                 .then(data => {
@@ -99,7 +99,7 @@ export const store = new Vuex.Store({
         },
         loadedMeetup(state) {
             return (meetupId) => {
-                return state.loadedMeetups.find((meetup) => {
+                return state.loadedMeetups.find(meetup => {
                     return meetup.id === meetupId
                 })
             }
