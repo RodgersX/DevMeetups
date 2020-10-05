@@ -84,7 +84,6 @@
                                 dark 
                                 class="red darken-1" 
                                 :disabled="!formIsValid">Create Meetup</v-btn>
-                                {{ submittableDateTime }}
                             </v-flex>
                         </v-layout>
                     </form>

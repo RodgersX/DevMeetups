@@ -19,6 +19,12 @@
         :to="item.link">
           <v-icon left>{{ item.icon }}</v-icon>{{ item.title }}
         </v-btn>
+        <v-btn 
+        text 
+        dark
+        v-if="userIsAuthenticated" @click="onLogout">
+          <v-icon left>mdi-logout</v-icon>Logout
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-navigation-drawer absolute temporary v-model="drawer">
@@ -32,6 +38,14 @@
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="userIsAuthenticated" @click="onLogout">
+          <v-list-item-icon>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -64,6 +78,11 @@ export default {
       },
       userIsAuthenticated() {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods: {
+      onLogout() {
+        this.$store.dispatch('logout')
       }
     }
 }

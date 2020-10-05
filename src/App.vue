@@ -10,14 +10,7 @@
 export default {
   data() {
     return {
-      drawer: false,
-      menuItems: [
-        {icon: 'mdi-account-group', title: 'View Meetups', link: '/meetups'}, 
-        {icon: 'mdi-plus-thick', title: 'Organize Meetup', link: '/meetup/new'},
-        {icon: 'mdi-face-profile', title: 'Profile', link: '/profile'},
-        {icon: 'mdi-home-plus', title: 'Sign Up', link: '/signup'},
-        {icon: 'mdi-login', title: 'Sign In', link: '/signin'}
-      ]
+      
     }
   }
 }
