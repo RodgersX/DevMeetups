@@ -18,6 +18,20 @@ export const store = new Vuex.Store({
         createMeetup(state, payload) {
             state.loadedMeetups.push(payload)
         },
+        updateMeetup(state, payload) {
+            const meetup = state.loadedMeetups.find(meetup => {
+                return meetup.id === payload.id
+            })
+            if(payload.title) {
+                meetup.title = payload.title
+            }
+            if(payload.description) {
+                meetup.description = payload.description
+            }
+            if(payload.date) {
+                meetup.date = payload.date
+            }
+        },
         setUser(state, payload) {
             state.user = payload
         },
@@ -45,6 +59,7 @@ export const store = new Vuex.Store({
                             description: obj[key].description,
                             imageUrl: obj[key].imageUrl,
                             date: obj[key].date,
+                            location: obj[key].location,
                             creatorId: obj[key].creatorId
                         })
                     }
@@ -65,14 +80,15 @@ export const store = new Vuex.Store({
             }
             let imageUrl
             let key
-            let ext
+            
+            // reach out to firebase to store it
             firebase.database().ref('meetups').push(meetup)
                 .then(data => {
                     key = data.key
                     return key
                 }).then(key => {
                     const filename = payload.image.name
-                    ext = filename.slice(filename.lastIndexOf('.'))
+                    const ext = filename.slice(filename.lastIndexOf('.'))
                     return firebase.storage().ref('meetups/' + key + '.' + ext).put(payload.image) // put files on the server
                 }).then(fileData => {
                     fileData.ref.getDownloadURL().then(downloadURL => {
@@ -87,13 +103,35 @@ export const store = new Vuex.Store({
                 }).catch(error => {
                     commit('setLoading', false)
                     commit('setError', error)
-                    console.log(error)
                 })
-            // reach out to firebase to store it
+            
+        },
+        updateMeetupData({commit}, payload) {
+            commit('setLoading', true)
+            const updateObj = {}
+            if(payload.title) {
+                updateObj.title = payload.title
+            }
+            if(payload.description) {
+                updateObj.description = payload.description
+            }
+            if(payload.date) {
+                updateObj.date = payload.date
+            }
+            firebase.database().ref('meetups/').child(payload.id).update(updateObj)
+                .then(() => {
+                    commit('setLoading', false)
+                    commit('updateMeetup', payload)
+                }).catch(err => {
+                    console.log(err)
+                    commit('setLoading', false)
+                })
         },
         signUserUp({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
+
+            //firebase handles all the auth operations for us
             firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
                 .then(user => {
                     commit('setLoading', false)

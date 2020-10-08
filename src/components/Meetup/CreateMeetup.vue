@@ -71,16 +71,13 @@
                             <v-flex xs12 sm6 offset-sm3>
                                 <label for="date" class="mr-6">Pick a Date:</label>
                                 <input type="date" v-model="date">
-                                <p class="mt-4">{{ date }}</p>
                             </v-flex>
                         </v-layout>
                         <v-layout row>
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-time-picker v-model="time" format="24hr"></v-time-picker>
-                                <p>{{ time }}</p>
                             </v-flex>
                         </v-layout>
-                        
                         <v-layout row>
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-btn
