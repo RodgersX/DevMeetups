@@ -2,7 +2,8 @@
     <v-dialog width="350px" persistent v-model="editDialog">
         <template v-slot:activator="{ on, attrs }">
             <v-btn 
-            text
+            class="ml-3"
+            outlined
             v-bind="attrs"
             v-on="on">
                 Edit Time

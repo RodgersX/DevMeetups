@@ -26,23 +26,20 @@
                                 :meetup="meetup"></app-edit-dialog>
                             </template>
                         </v-card-title>
-                        <v-img height="130px" :src="meetup.imageUrl"></v-img>
+                        <v-img height="330px" :src="meetup.imageUrl"></v-img>
                         <v-card-text>
                             <div class="info--text">
                                 {{ meetup.date }} - {{ meetup.location }}
                                 <div>
-                                    <app-date-dialog :meetup="meetup" v-if="userIsCreator" />
-                                </div>
-                                <div>
-                                     <app-time-dialog :meetup="meetup" v-if="userIsCreator"/>
+                                    <app-date-dialog :meetup="meetup"  v-if="userIsCreator" />
+                                    <app-time-dialog :meetup="meetup" v-if="userIsCreator"/>
                                 </div>
                             </div>
-                            
-                            <div>{{ meetup.description }}</div>
+                            <div class="subtitle-1">{{ meetup.description }}</div>
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <register-dialog :meetupId="meetup.id"/>
+                            <register-dialog :meetupId="meetup.id" v-if="userIsAuthenticated && !userIsCreator"/>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
