@@ -2,7 +2,7 @@
     <v-dialog width="350px" persistent v-model="editDialog">
         <template v-slot:activator="{ on, attrs }">
             <v-btn 
-            icon
+            text
             v-bind="attrs"
             v-on="on">
                 Edit Date

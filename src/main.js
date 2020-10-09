@@ -8,12 +8,14 @@ import alertCmp from './components/shared/alert.vue'
 import EditDialog from './components/Meetup/Edit/EditMeetupDetailsDialog.vue'
 import editDateDialog from './components/Meetup/Edit/editMeetupDateDialog.vue'
 import editTimeDialog from './components/Meetup/Edit/editMetupTimeDialog.vue'
+import registerDialog from './components/Meetup/Registration/RegisterDialog.vue'
 
 Vue.config.productionTip = false
 Vue.component('app-alert', alertCmp)
 Vue.component('app-edit-dialog', EditDialog)
 Vue.component('app-date-dialog', editDateDialog)
 Vue.component('app-time-dialog', editTimeDialog)
+Vue.component('register-dialog', registerDialog)
 
 new Vue({
   vuetify,

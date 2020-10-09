@@ -30,11 +30,11 @@
                         <v-card-text>
                             <div class="info--text">
                                 {{ meetup.date }} - {{ meetup.location }}
-                                <div class="pl-7">
-                                    <app-date-dialog class="mr-5" :meetup="meetup" v-if="userIsCreator" />
+                                <div>
+                                    <app-date-dialog :meetup="meetup" v-if="userIsCreator" />
                                 </div>
-                                <div class="pl-7">
-                                     <app-time-dialog class="ml-5" :meetup="meetup" v-if="userIsCreator"/>
+                                <div>
+                                     <app-time-dialog :meetup="meetup" v-if="userIsCreator"/>
                                 </div>
                             </div>
                             
@@ -42,7 +42,7 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn dark class="red darken-1">Register</v-btn>
+                            <register-dialog :meetupId="meetup.id"/>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
