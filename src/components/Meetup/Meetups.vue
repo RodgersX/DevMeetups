@@ -44,13 +44,7 @@
 </template>
 
 <script>
-import Header from '@/components/header'
-
 export default {
-    components: {
-        'main-header': Header
-    },
-
     computed: {
         meetups() {
             return this.$store.getters.loadedMeetups

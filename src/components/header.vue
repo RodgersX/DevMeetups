@@ -71,7 +71,7 @@ export default {
           menuItems = [
             {icon: 'mdi-account-group', title: 'View Meetups', link: '/meetups'}, 
             {icon: 'mdi-plus-thick', title: 'Organize Meetup', link: '/meetup/new'},
-            {icon: 'mdi-face-profile', title: 'Profile', link: '/profile'}
+            // {icon: 'mdi-face-profile', title: 'Profile', link: '/profile'}
           ]
         }
         return menuItems

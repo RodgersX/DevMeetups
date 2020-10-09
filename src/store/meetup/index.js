@@ -106,7 +106,6 @@ export default {
                     commit('setLoading', false)
                     commit('updateMeetup', payload)
                 }).catch(err => {
-                    console.log(err)
                     commit('setLoading', false)
                 })
         }

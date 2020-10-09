@@ -4,6 +4,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router/index'
 import { store } from './store'
+import Header from './components/header.vue'
 import alertCmp from './components/shared/alert.vue'
 import EditDialog from './components/Meetup/Edit/EditMeetupDetailsDialog.vue'
 import editDateDialog from './components/Meetup/Edit/editMeetupDateDialog.vue'
@@ -11,6 +12,7 @@ import editTimeDialog from './components/Meetup/Edit/editMetupTimeDialog.vue'
 import registerDialog from './components/Meetup/Registration/RegisterDialog.vue'
 
 Vue.config.productionTip = false
+Vue.component('main-header', Header)
 Vue.component('app-alert', alertCmp)
 Vue.component('app-edit-dialog', EditDialog)
 Vue.component('app-date-dialog', editDateDialog)

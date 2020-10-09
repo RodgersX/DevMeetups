@@ -95,13 +95,7 @@
 </template>
 
 <script>
-import Header from '@/components/header'
-
 export default {
-    components: {
-        'main-header': Header
-    },
-
     data() {
         return {
             title: '',

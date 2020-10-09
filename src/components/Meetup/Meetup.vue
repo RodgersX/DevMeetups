@@ -49,12 +49,7 @@
 </template>
 
 <script>
-import Header from '@/components/header'
-
 export default {
-    components: {
-        'main-header': Header
-    },
     props: ['id'],
     computed: {
         meetup() {
